@@ -2,3 +2,17 @@
 
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import './../node_modules/ngx-toastr/toastr.css';
+.xng-breadcrumb-root {
+    padding: 8px 16px;
+    display: inline;
+    border-radius: 0;
+}
+
+label.xng-breadcrumb-trail {
+    margin-bottom: 0;
+    color: orange;
+}
+
+.xng-breadcrumb-seperator {
+    padding: 0 0;
+}
