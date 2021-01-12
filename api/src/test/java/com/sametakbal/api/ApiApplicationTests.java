@@ -1,10 +1,10 @@
-package com.sametakbal.ecommerce;
+package com.sametakbal.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootEcommerceApplicationTests {
+class ApiApplicationTests {
 
 	@Test
 	void contextLoads() {
