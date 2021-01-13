@@ -1,2 +1,6 @@
-package com.sametakbal.api.entity.enums;public class Role {
+package com.sametakbal.api.entity.enums;
+
+public enum Role {
+    ADMIN,
+    USER
 }

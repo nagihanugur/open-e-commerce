@@ -1,2 +1,6 @@
-package com.sametakbal.api.entity.enums;public enum Gender {
+package com.sametakbal.api.entity.enums;
+
+public enum Gender {
+    MALE,
+    FEMALE
 }
