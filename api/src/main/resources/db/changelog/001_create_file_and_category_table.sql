@@ -6,7 +6,7 @@ create table if not exists file(
     entity_id uuid not null,
     created_date timestamp default now(),
     last_update timestamp default now()
-);
+    );
 create table if not exists category(
     id uuid DEFAULT uuid_generate_v4() primary key,
     title varchar(255) not null,
@@ -16,6 +16,6 @@ create table if not exists category(
     created_date timestamp default now(),
     last_update  timestamp default now(),
     CONSTRAINT fk_customer
-        FOREIGN KEY (parent_id)
-            REFERENCES category (id)
-);
+    FOREIGN KEY (parent_id)
+    REFERENCES category (id)
+    );

@@ -8,8 +8,6 @@ spring:
     hibernate:
       generate_statistics: true
       ddl-auto: validate
-
-  flyway:
-    locations: classpath:db/migration/
-    out-of-order: true
-    baseline-on-migrate: true
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+    enabled: true

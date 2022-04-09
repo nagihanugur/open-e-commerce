@@ -1,7 +1,7 @@
-package com.opencommerce.api.entity;
+package com.openecommerce.api.entity;
 
 
-import com.opencommerce.api.enums.Gender;
+import com.openecommerce.api.enums.Gender;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;

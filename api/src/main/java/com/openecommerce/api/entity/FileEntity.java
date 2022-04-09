@@ -1,4 +1,4 @@
-package com.opencommerce.api.entity;
+package com.openecommerce.api.entity;
 
 
 import javax.persistence.*;
