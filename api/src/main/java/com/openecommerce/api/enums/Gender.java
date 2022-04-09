@@ -1,4 +1,4 @@
-package com.opencommerce.api.enums;
+package com.openecommerce.api.enums;
 
 public enum Gender {
     MALE,
