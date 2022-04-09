@@ -12,3 +12,4 @@ spring:
   flyway:
     locations: classpath:db/migration/
     out-of-order: true
+    baseline-on-migrate: true
