@@ -58,4 +58,12 @@ public class FileEntity extends BaseEntity {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+
+    public UUID getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(UUID entityId) {
+        this.entityId = entityId;
+    }
 }
