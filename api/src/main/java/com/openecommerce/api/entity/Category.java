@@ -1,6 +1,7 @@
 package com.openecommerce.api.entity;
 
 
+import com.openecommerce.api.dto.CategoryDto;
 import com.openecommerce.api.enums.Gender;
 
 import javax.persistence.*;
@@ -48,6 +49,9 @@ public class Category extends BaseEntity{
         this.children = children;
         this.parentCategory = parentCategory;
         this.gender = gender;
+    }
+
+    public Category(CategoryDto category) {
     }
 
     public UUID getUuid() {

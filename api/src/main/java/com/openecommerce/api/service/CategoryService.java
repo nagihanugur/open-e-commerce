@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CategoryService {
@@ -25,6 +27,47 @@ public class CategoryService {
         categories.forEach(category -> categoryDtos.add(new CategoryDto(category)));
 
         return new ServiceResult<List<CategoryDto>>(categoryDtos);
+    }
+
+    public ServiceResult<CategoryDto> save(CategoryDto category){
+        ServiceResult<CategoryDto> serviceResult = new ServiceResult<>();
+
+        if(category.getTitle() == null || category.getGender() == null){
+           serviceResult.setSuccess(false);
+           serviceResult.setErrorMessage("all fields required!");
+           return serviceResult;
+        }
+        serviceResult.setData(new CategoryDto(categoryRepository.save(new Category(category))));
+        serviceResult.setSuccess(true);
+        return serviceResult;
+
+    }
+
+    public ServiceResult<Void> deleteCategoryById(UUID uuid){
+           ServiceResult<Void> serviceResult = new ServiceResult<>();
+        if (categoryRepository.existsById(uuid)){
+            categoryRepository.deleteById(uuid);
+            serviceResult.setSuccess(true);
+            return serviceResult;
+        }
+        serviceResult.setErrorMessage("category not found by id");
+        serviceResult.setSuccess(false);
+        return serviceResult;
+    }
+
+    public ServiceResult<CategoryDto> getById(UUID uuid){
+        ServiceResult<CategoryDto> serviceResult = new ServiceResult<>();
+        Optional<Category> category = categoryRepository.findById(uuid);
+
+        if (categoryRepository.existsById(uuid)){
+            serviceResult.setData(new CategoryDto(category.get()));
+            serviceResult.setSuccess(true);
+            return serviceResult;
+        }
+        serviceResult.setSuccess(false);
+        serviceResult.setErrorMessage("category not found by id");
+        return serviceResult;
+
     }
 
 

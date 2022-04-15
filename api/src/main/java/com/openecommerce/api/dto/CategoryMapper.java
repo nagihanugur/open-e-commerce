@@ -17,6 +17,7 @@ public class CategoryMapper {
         CategoryDto dto = new CategoryDto();
         dto.setUuid(category.getUuid());
         dto.setTitle(category.getTitle());
+        dto.setGender(category.getGender());
     //  List<String> categories = new ArrayList<>();
      //  category.getChildren().forEach(child -> categories.add(child.getTitle()));
         dto.setChildren(category.getChildren());
