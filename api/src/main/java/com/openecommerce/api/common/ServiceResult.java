@@ -1,9 +1,8 @@
 package com.openecommerce.api.common;
 
-import com.openecommerce.api.dto.CategoryDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ServiceResult<T> {
 
     private T data;

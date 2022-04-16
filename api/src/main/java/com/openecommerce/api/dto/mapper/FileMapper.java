@@ -1,5 +1,6 @@
-package com.openecommerce.api.dto;
+package com.openecommerce.api.dto.mapper;
 
+import com.openecommerce.api.dto.FileDto;
 import com.openecommerce.api.entity.FileEntity;
 
 import java.util.ArrayList;

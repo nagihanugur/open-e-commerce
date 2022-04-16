@@ -1,39 +1,47 @@
 package com.openecommerce.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.openecommerce.api.entity.Category;
 import com.openecommerce.api.enums.Gender;
 
 import java.util.List;
 import java.util.UUID;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategoryDto {
 
-      private UUID uuid;
-      private String title;
-      private List<Category> children;
+    private UUID id;
+    private String title;
+
+    private String description;
+    private List<CategoryDto> children;
     private Gender gender;
 
-      public CategoryDto(UUID uuid, String title, List<Category> children, Gender gender){
+    public CategoryDto(UUID id, String title, String description, List<CategoryDto> children, Gender gender) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.children = children;
+        this.gender = gender;
+    }
 
-          this.uuid = uuid;
-          this.title = title;
-          this.children = children;
-          this.gender = gender;
-
-      }
-
-      public CategoryDto(Category category){}
+    public CategoryDto(Category category) {
+        this.id = category.getId();
+        this.title = category.getTitle();
+        this.description = category.getDescription();
+        this.gender = category.getGender();
+    }
 
     public CategoryDto() {
 
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public UUID getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Gender getGender() {
@@ -52,11 +60,18 @@ public class CategoryDto {
         this.title = title;
     }
 
-    public List<Category> getChildren() {
+    public List<CategoryDto> getChildren() {
         return children;
     }
-
     public void setChildren(List<Category> children) {
-        this.children = children;
+        this.children = children.stream().map(CategoryDto::new).toList();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

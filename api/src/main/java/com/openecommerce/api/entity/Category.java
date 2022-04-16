@@ -1,7 +1,6 @@
 package com.openecommerce.api.entity;
 
 
-import com.openecommerce.api.dto.CategoryDto;
 import com.openecommerce.api.enums.Gender;
 
 import javax.persistence.*;
@@ -12,20 +11,20 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "category")
-public class Category extends BaseEntity{
+public class Category extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "id")
-    private UUID uuid;
+    private UUID id;
 
-    @Column(name = "title",nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description",length = 1000)
+    @Column(name = "description", length = 1000)
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="parentCategory", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentCategory", orphanRemoval = true)
     private List<Category> children = new ArrayList<>();
 
     @ManyToOne
@@ -39,11 +38,18 @@ public class Category extends BaseEntity{
     public Category() {
     }
 
+    public Category(UUID id, String title, String description, Gender gender) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.gender = gender;
+    }
+
     public Category(ZonedDateTime createdDate, ZonedDateTime lastUpdate,
                     UUID uuid, String title, String description,
                     List<Category> children, Category parentCategory, Gender gender) {
         super(createdDate, lastUpdate);
-        this.uuid = uuid;
+        this.id = uuid;
         this.title = title;
         this.description = description;
         this.children = children;
@@ -51,15 +57,12 @@ public class Category extends BaseEntity{
         this.gender = gender;
     }
 
-    public Category(CategoryDto category) {
+    public UUID getId() {
+        return id;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getTitle() {

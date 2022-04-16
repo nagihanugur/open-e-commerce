@@ -26,17 +26,17 @@ public class CategoryController {
     }
 
     @PostMapping
-    public  ResponseEntity<ServiceResult<CategoryDto>> addCategory(@RequestBody CategoryDto category){
+    public  ResponseEntity<ServiceResult<Void>> addCategory(@RequestBody CategoryDto category){
         return new ResponseEntity<>(categoryService.save(category), HttpStatus.OK);
     }
 
     @DeleteMapping("/{categoryUuid}")
-    public ResponseEntity<ServiceResult<Void>> deleteCategory(@PathVariable UUID uuid){
-        return new ResponseEntity<>(categoryService.deleteCategoryById(uuid), HttpStatus.OK);
+    public ResponseEntity<ServiceResult<Void>> deleteCategory(@PathVariable UUID categoryUuid){
+        return new ResponseEntity<>(categoryService.deleteCategoryById(categoryUuid), HttpStatus.OK);
     }
 
-    @GetMapping("/{categoryUuid}")
-    public ResponseEntity<ServiceResult<CategoryDto>> getCategoryById(UUID uuid){
-        return new ResponseEntity<>(categoryService.getById(uuid), HttpStatus.OK);
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<ServiceResult<CategoryDto>> getCategoryById(UUID categoryId){
+        return new ResponseEntity<>(categoryService.getById(categoryId), HttpStatus.OK);
     }
 }
